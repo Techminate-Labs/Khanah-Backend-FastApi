@@ -1,0 +1,9 @@
+fastapi==0.75.0
+
+# Database
+sqlalchemy==1.4.32
+psycopg2==2.9.3
+alembic==1.7.6
+
+# Environment Variable
+python-decouple=3.6
