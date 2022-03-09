@@ -8,6 +8,7 @@ To contribute to the **Khanah** mobile app you will need to:
 - Create and activate a virtual environment
 - Install the required libraries
 - Create a postgres database
+- Migrate the database
 - Add the environment variables
 
 #### Clone the project
@@ -69,9 +70,18 @@ manager.
 
 > Edit the .env to fit your need
 
+#### Migrate the database
+To continue you will need to create the tables somehow. We handled that
+using alembic.
+Run the following command in your terminal to migrate the DB
+```shell
+(venv) > alembic upgrade head
+```
+
 #### Run your project
 ```shell
 (venv) > uvicorn app:app --reload
 # if that doesn't work then run this
 (venv) > python -m uvicorn app:app --reload
 ```
+
