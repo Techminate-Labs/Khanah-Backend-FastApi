@@ -1,10 +1,10 @@
-from pydantic import BaseModel
 from decouple import config
+from pydantic import BaseModel
 
 
 class Settings(BaseModel):
-    PROJECT_TITLE: str = 'Khanah Backend'
-    PROJECT_VERSION: str = '1.0.0'
+    PROJECT_TITLE: str = "Khanah Backend"
+    PROJECT_VERSION: str = "1.0.0"
 
     DATABASE_USER: str = config("POSTGRES_USER")
     DATABASE_PASSWORD: str = config("POSTGRES_PASSWORD")

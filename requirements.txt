@@ -1,6 +1,9 @@
 fastapi==0.75.0
 uvicorn==0.17.5
 
+# Github
+pre-commit
+
 # Database
 sqlalchemy==1.4.32
 psycopg2==2.9.3
