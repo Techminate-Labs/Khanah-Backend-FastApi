@@ -4,7 +4,7 @@ from typing import Optional
 from pydantic import BaseModel
 
 
-class ItemBase(BaseModel):
+class ProductBase(BaseModel):
     name: str
     cost: float
     price: float
@@ -13,7 +13,7 @@ class ItemBase(BaseModel):
     available: Optional[bool] = True
 
 
-class ItemCreate(ItemBase):
+class ProductCreate(ProductBase):
     class Config:
         schema_extra = {
             "example": {
@@ -27,7 +27,7 @@ class ItemCreate(ItemBase):
         }
 
 
-class ItemUpdate(ItemBase):
+class ProductUpdate(ProductBase):
     class Config:
         schema_extra = {
             "example": {
@@ -41,7 +41,7 @@ class ItemUpdate(ItemBase):
         }
 
 
-class ItemOut(ItemBase):
+class ProductOut(ProductBase):
     id: int
     slug: str
     created_at: datetime

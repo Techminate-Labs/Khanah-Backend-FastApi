@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 
-from config.database import engine
+from apps.routers.base import router
 from config.settings import settings
-from models.base import Base
-from routers.base import router
+from database.models.base import Base
+from database.session import engine
 
 
 def include_router(app: FastAPI) -> None:
