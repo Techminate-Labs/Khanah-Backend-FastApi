@@ -6,7 +6,7 @@ pre-commit
 
 # Database
 sqlalchemy==1.4.32
-psycopg2==2.9.3
+psycopg2-binary==2.9.3
 alembic==1.7.6
 python-slugify==6.1.1
 
