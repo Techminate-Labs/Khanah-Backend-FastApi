@@ -1,17 +1,17 @@
-"""Added items model
+"""Added product model
 
 Revision ID: fea22fc49f49
 Revises: 1a7d56ed86bd
 Create Date: 2022-03-09 00:22:51.933510
 
 """
-from alembic import op
 import sqlalchemy as sa
+from alembic import op
 
 
 # revision identifiers, used by Alembic.
-revision = 'fea22fc49f49'
-down_revision = '1a7d56ed86bd'
+revision = "fea22fc49f49"
+down_revision = "1a7d56ed86bd"
 branch_labels = None
 depends_on = None
 

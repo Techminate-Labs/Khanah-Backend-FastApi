@@ -8,10 +8,10 @@ from sqlalchemy import Integer
 from sqlalchemy import String
 
 from .base_class import Base
-from utils.db_helpers import get_slug
+from apps.utils.db_helpers import get_slug
 
 
-class Items(Base):
+class Product(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(80), nullable=False)
     slug = Column(String(80))
@@ -33,4 +33,4 @@ class Items(Base):
         return f"<Item name={self.name} price={self.price}>"
 
 
-event.listen(Items.name, "set", Items.generate_slug, retval=False)
+event.listen(Product.name, "set", Product.generate_slug, retval=False)
