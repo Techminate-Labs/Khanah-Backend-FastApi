@@ -12,6 +12,7 @@ from apps.utils.db_helpers import get_slug
 
 
 class Product(Base):
+    __tablename__ = "products"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(80), nullable=False)
     slug = Column(String(80))
