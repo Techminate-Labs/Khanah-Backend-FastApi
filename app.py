@@ -1,13 +1,13 @@
 from fastapi import FastAPI
 
-from core.settings import settings
-from core.database import engine
-from versions.v1 import v1_router
+from config.database import engine
+from config.settings import settings
 from models.base import Base
+from routers.base import router
 
 
 def include_router(app: FastAPI) -> None:
-    app.include_router(v1_router)
+    app.include_router(router)
 
 
 def create_tables():

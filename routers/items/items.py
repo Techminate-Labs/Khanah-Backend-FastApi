@@ -4,8 +4,8 @@ from fastapi import APIRouter
 from fastapi import Depends
 from sqlalchemy.orm import Session
 
-from . import controllers
-from core.dependencies import get_db
+from config.dependencies import get_db
+from controllers.items import items as controllers
 from schemas.items import ItemCreate
 from schemas.items import ItemOut
 from schemas.items import ItemUpdate
