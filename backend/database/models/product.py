@@ -1,3 +1,4 @@
+from apps.utils.db_helpers import get_slug
 from sqlalchemy import Boolean
 from sqlalchemy import Column
 from sqlalchemy import DateTime
@@ -8,7 +9,6 @@ from sqlalchemy import Integer
 from sqlalchemy import String
 
 from .base_class import Base
-from backend.apps.utils.db_helpers import get_slug
 
 
 class Product(Base):

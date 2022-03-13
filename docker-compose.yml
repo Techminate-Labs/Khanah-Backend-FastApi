@@ -1,11 +1,13 @@
-version: '3.8'
+version: '3.9'
+
 services:
   server:
     build:
       context: ./backend
       dockerfile: Dockerfile
     volumes:
-      - ./backend/:/backend/
+      - ./backend:/code
+      - ./backend:/backend
     command: uvicorn app:app --reload --workers 1 --host 0.0.0.0 --port 8000
     env_file:
       - ./backend/.env
@@ -22,4 +24,4 @@ services:
     ports:
       - "5433:5432"
 volumes:
-    postgres_data:
+  postgres_data:
