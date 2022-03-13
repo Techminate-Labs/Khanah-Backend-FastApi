@@ -36,7 +36,6 @@ manager.
 #### Build and run the docker image
 ```shell
 > docker-compose up -d --build
-> docker-compose up
 ```
 
 #### Migrate the database
@@ -55,8 +54,8 @@ starts with something that looks like the following:
 
 ```shell
 CONTAINER ID      IMAGE
-a123bc007edf      phresh_server
-867g5309hijk      postgres:12.1-alpine
+a123bc007edf      backend-server
+867g5309hijk      backend-db
 ```
 
 Copy the ID of the container running our server. In this example
