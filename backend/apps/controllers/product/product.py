@@ -1,12 +1,12 @@
 from sqlalchemy.orm import Session
 
-from apps.repositories.product import create
-from apps.repositories.product import delete_with_slug
-from apps.repositories.product import get_all
-from apps.repositories.product import get_with_slug
-from apps.repositories.product import update_with_slug
-from apps.schemas.product import ProductCreate
-from apps.schemas.product import ProductUpdate
+from backend.apps.repositories.product import create
+from backend.apps.repositories.product import delete_with_slug
+from backend.apps.repositories.product import get_all
+from backend.apps.repositories.product import get_with_slug
+from backend.apps.repositories.product import update_with_slug
+from backend.apps.schemas.product import ProductCreate
+from backend.apps.schemas.product import ProductUpdate
 
 
 def get_all_products(*, limit: int = 20, skip: int = 0, db: Session):

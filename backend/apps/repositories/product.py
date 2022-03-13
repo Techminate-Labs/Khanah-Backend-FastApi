@@ -5,10 +5,10 @@ from fastapi import HTTPException
 from sqlalchemy import desc
 from sqlalchemy.orm import Session
 
-from apps.schemas.product import ProductCreate
-from apps.schemas.product import ProductUpdate
-from apps.utils.sanitize_schemas_body import sanitize
-from database.models.product import Product
+from backend.apps.schemas.product import ProductCreate
+from backend.apps.schemas.product import ProductUpdate
+from backend.apps.utils.sanitize_schemas_body import sanitize
+from backend.database.models.product import Product
 
 
 def create(body: ProductCreate, db: Session) -> Product:
