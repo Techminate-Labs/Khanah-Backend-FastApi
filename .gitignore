@@ -103,7 +103,7 @@ celerybeat.pid
 
 # Environments
 local.env
-.env
+backend/.env
 .venv
 .env.save
 env/

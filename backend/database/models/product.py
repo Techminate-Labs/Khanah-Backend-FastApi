@@ -8,7 +8,7 @@ from sqlalchemy import Integer
 from sqlalchemy import String
 
 from .base_class import Base
-from apps.utils.db_helpers import get_slug
+from backend.apps.utils.db_helpers import get_slug
 
 
 class Product(Base):
