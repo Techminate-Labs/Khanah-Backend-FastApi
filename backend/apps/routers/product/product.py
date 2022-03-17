@@ -13,7 +13,7 @@ router = APIRouter(prefix="/product", tags=["Product"])
 
 
 @router.get("/", status_code=200, response_model=List[ProductOut])
-def get_all_items(limit: int = 20, skip: int = 0, db: Session = Depends(get_db)):
+def get_all_products(limit: int = 20, skip: int = 0, db: Session = Depends(get_db)):
     items = controllers.get_all_products(limit=limit, skip=skip, db=db)
     return items
 
