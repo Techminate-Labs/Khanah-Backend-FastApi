@@ -1,20 +1,19 @@
 from typing import List
 
-from fastapi import APIRouter
-from fastapi import Depends
-from sqlalchemy.orm import Session
-
 from apps.controllers.product import product as controllers
 from apps.schemas.product import ProductCreate
 from apps.schemas.product import ProductOut
 from apps.schemas.product import ProductUpdate
 from config.dependencies import get_db
+from fastapi import APIRouter
+from fastapi import Depends
+from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/product", tags=["Product"])
 
 
 @router.get("/", status_code=200, response_model=List[ProductOut])
-def get_all_items(limit: int = 20, skip: int = 0, db: Session = Depends(get_db)):
+def get_all_products(limit: int = 20, skip: int = 0, db: Session = Depends(get_db)):
     items = controllers.get_all_products(limit=limit, skip=skip, db=db)
     return items
 

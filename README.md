@@ -1,15 +1,13 @@
 # Khanah Backend
-Khanah is a multi-vendor 
-ecommerce application built around The New Boston Coin. 
+Khanah is a multi-vendor
+ecommerce application built around The New Boston Coin.
 
 ## Contribute
 To contribute to the **Khanah** mobile app you will need to:
 - Clone the repository locally
-- Create and activate a virtual environment
-- Install the required libraries
-- Create a postgres database
+- Edit the environment variable
+- Build and run the docker image
 - Migrate the database
-- Add the environment variables
 
 #### Clone the project
 To clone this project you will navigate to
@@ -22,46 +20,10 @@ or command prompt and the run the command below in your terminal.
 > Don't forget to change <folder_name> to the name you want to
 > clone the project too.
 
-#### Create and activate virtual environment
-To isolate your dependencies and to avoid conflict with other
-projects you have on your system it is advisable to create a
-virtual environment.
-```shell
-> python -m venv venv
-> venv/Scripts/actvate # Run this if you are on windows
-> source venv/bin/activate # This if yoy are on linux or mac
-```
-
-#### Install required libraries
-Now that you have activated your virtual environment it is time
-to install the necessary libraries for you to start contributing.
-
-If you check the root folder of the files you have just cloned
-you will see a `requirements.txt` file. Open it, and you will see
-a list of dependencies in this format `fastapi==0.75.0`. 
-
-To install them run the command below in your terminal.
-```shell
-(venv) > pip install -r requirements.txt
-```
-
-> Noticed the `(venv)`?? That signifies that the virtual environment
-> is activated. If you can't find it in your terminal make sure you go
-> through step 2 again.
-
-#### Create a postgres DB
-To continue you will need to have Postgres installed. If you don't have
-it installed yet follow [this tutorial](https://youtu.be/YysG13sFGok) 
-to install it.
-
-After installation open the pgadmin and create a new db called khanah
-![PGAdmin Installation](https://d2o1p3wqepjvn9.cloudfront.net/media/uploads/2021/03/17/db-connection-gif.gif)
-
-
 #### Add environment variable
 Now it's time to add the environment variable for stuffs to work properly
 run the command below in your terminal to duplicate `.env.example`
-and rename the duplicate to `.env` or simply do that with your file 
+and rename the duplicate to `.env` or simply do that with your file
 manager.
 
 ```shell
@@ -70,13 +32,68 @@ manager.
 
 > Edit the .env to fit your need
 
-#### Migrate the database
-To continue you will need to create the tables somehow. We handled that
-using alembic.
-Run the following command in your terminal to migrate the DB
+
+#### Build and run the docker image
 ```shell
-(venv) > alembic upgrade head
+> docker-compose up -d --build
 ```
+
+#### Migrate the database
+To migrate the database you will need to enter an interactive
+shell in your docker container
+
+First, open up a new terminal window or tab.
+Then get the IDs of all running processes like so:
+```shell
+docker ps
+```
+
+You should see an output that
+starts with something that looks like the following:
+
+
+```shell
+CONTAINER ID      IMAGE
+a123bc007edf      backend-server
+867g5309hijk      backend-db
+```
+
+Copy the ID of the container running our server. In this example
+that would be **a123bc007edf**. Now we can start
+executing bash commands as the container's root use by typing:
+
+```shell
+docker exec -it a123bc007edf bash
+```
+
+The -it part indicates we want to use the container interactively so
+we can run commands and inspect the container. By default,
+Docker containers run and exit as soon as they've finished executing.
+
+Inside the bash shell, we can start exploring a little bit.
+
+```shell
+ls
+```
+
+We should see all of the files and directories that Docker
+has copied into our container.
+
+```shell
+Dockerfile    alembic.ini     app      requirements.txt     tests
+```
+
+Run the migration
+```shell
+alembic upgrade head
+```
+
+We should see an output indicating that our db has been migrated like
+below:
+```shell
+INFO   [alembic.runtime.migration] Running upgrade  -> 12345678654 ...
+```
+
 
 #### Run your project
 ```shell
@@ -84,4 +101,3 @@ Run the following command in your terminal to migrate the DB
 # if that doesn't work then run this
 (venv) > python -m uvicorn app:app --reload
 ```
-

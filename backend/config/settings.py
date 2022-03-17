@@ -10,7 +10,7 @@ class Settings(BaseModel):
     DATABASE_PASSWORD: str = config("POSTGRES_PASSWORD")
     DATABASE_SERVER: str = config("POSTGRES_SERVER")
     DATABASE_PORT: str = config("POSTGRES_PORT")
-    DATABASE_NAME: str = config("POSTGRES_NAME")
+    DATABASE_NAME: str = config("POSTGRES_DB")
     DATABASE_URL: str = f"postgresql+psycopg2://{DATABASE_USER}:{DATABASE_PASSWORD}@{DATABASE_SERVER}:{DATABASE_PORT}/{DATABASE_NAME}"
 
 
